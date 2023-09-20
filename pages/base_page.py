@@ -3,6 +3,8 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from .locators import BasePageLocators
+
 import math
 import time
 
@@ -26,18 +28,23 @@ class BasePage():
 
         return False
 
-
     def is_disappeared(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException).\
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
-
         return True
     
     def its_elements_equal(self, first_element, second_element):
         assert first_element == second_element, second_element + " is not equal " + first_element
+
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
     
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
