@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 class LoginPageLocators():
     EMAIL_INPUT_LOGIN = (By.NAME, 'login-username')
     PASSWORD_INPUT_LOGIN = (By.NAME, 'login-password')
@@ -15,8 +14,13 @@ class LoginPageLocators():
     REGISTRATION_FORM = (By.ID, 'register_form')
 
 class BasePageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, '#login_link_inc')
+    SEE_IN_BASKET = (By.XPATH, '//span[@class = "btn-group"]//a')
+
+class BasketPageLocators():
+    PRODUCTS_IN_BUSKET = (By.CLASS_NAME, 'basket-items')
+    MESSAGE_EMPTY_BASKET = (By.XPATH, '//div[@id = "content_inner"]/p')
 
 class ProductPageLocators():
     BASKET_BUTTON = (By.CLASS_NAME, 'btn.btn-lg.btn-primary.btn-add-to-basket')
