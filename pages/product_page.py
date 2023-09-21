@@ -1,5 +1,7 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 class ProductPage(BasePage):
     def add_product_to_basket_with_alert_check(self):
@@ -20,12 +22,13 @@ class ProductPage(BasePage):
             "Success message in not desappeared, but should be"
 
     def should_be_correct_product_name(self):
+        WebDriverWait(self.browser, 4).until(EC.presence_of_element_located(ProductPageLocators.NAME_PRODUCT))
         name_in_title = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT).text
         name_in_massange = self.browser.find_element(*ProductPageLocators.NAME_IN_MASSANGE).text
         BasePage.its_elements_equal(self, name_in_title, name_in_massange)
         
-
     def should_be_correct_price(self):
+        WebDriverWait(self.browser, 4).until(EC.presence_of_element_located(ProductPageLocators.PRICE_PRODUCT))
         price_in_title = self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT).text
         price_in_massange = self.browser.find_element(*ProductPageLocators.PRICE_PRODUCT_IN_MASSANGE).text
         BasePage.its_elements_equal(self, price_in_title, price_in_massange)
