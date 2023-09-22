@@ -3,7 +3,7 @@ from ..pages.login_page import LoginPage
 from ..pages.basket_page import BasketPage
 import pytest
 
-@pytest.mark.test_go_to_login_page
+@pytest.mark.test_go_to_login_page_from_main
 def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = BasePage(browser, link)
