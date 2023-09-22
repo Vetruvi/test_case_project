@@ -1,6 +1,6 @@
-from ..pages.main_page import BasePage
-from ..pages.login_page import LoginPage
-from ..pages.basket_page import BasketPage
+from .pages.main_page import BasePage
+from .pages.login_page import LoginPage
+from .pages.basket_page import BasketPage
 import pytest
 
 @pytest.mark.test_go_to_login_page_from_main
