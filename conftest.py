@@ -10,9 +10,6 @@ def pytest_addoption(parser):
     
     parser.addoption('--language', action='store', default="en",
                      help="Choose language: Russian = ru, English = en, Espanol = es, French = fr")
-    
-    parser.addoption('--time_sleep', action='store', default=30,
-                     help="How long to wait")
 
 @pytest.fixture(scope="function")
 def browser(request):
@@ -37,8 +34,3 @@ def browser(request):
     yield browser
     print("\nquit browser..")
     browser.quit()
-
-@pytest.fixture(scope="function")
-def sleep(request):
-    time_sleep = request.config.getoption("time_sleep")
-    return int(time_sleep)
